@@ -1,0 +1,38 @@
+# Metadata for your course
+
+title: 初めてのGitHub
+tagline: プルリクエストの使い方を学びましょう
+description: 10分ほどでプルリクエストの使い方を1から学ぶことができます。
+tags: ["GitHub"]
+
+# Repository setup
+# The following section template information for the repository
+# This will be used when the repository is crated for each individual learner
+
+template:
+  name: my-first-pr
+  repo: my-first-pr-template
+
+# `before` block
+# Actions to take place after the learner registers, but before they start interacting with their repo
+
+before:
+- type: createIssue
+  title: ようこそ！
+  body: welcome-text.md
+
+# Steps for the course
+# A list of steps that take the learner through the course
+# Create one step for each action that a learner will complete
+
+steps:
+- title: イシューの担当者になりましょう
+  description: イシューの担当者になることで誰のタスクなのかを明確にしましょう
+  event: issues.assigned
+  actions:
+  - type: gate
+    left: '%payload.issue.assignee.login%'
+    operator: ===
+    right: '%user.login%'
+  - type: respond
+    with: issue-assigned.md
