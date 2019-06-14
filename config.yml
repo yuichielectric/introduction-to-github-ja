@@ -34,5 +34,8 @@ steps:
     left: '%payload.issue.assignee.login%'
     operator: ===
     right: '%user.login%'
+    else:
+      - type: respond
+        with: '%payload.issue.assignee.login% and %user.login%'
   - type: respond
     with: issue-assigned.md
