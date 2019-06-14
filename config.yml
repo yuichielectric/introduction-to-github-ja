@@ -31,14 +31,9 @@ steps:
   event: issues.assigned
   link: '{{ repoUrl }}/issues/1'
   actions:
-  - type: respond
-    with: '%payload.issue%'
   - type: gate
-    left: '%payload.issue.assignee.login%'
+    left: '%payload.assignee.login%'
     operator: ===
-    right: '%user.login%'
-    else:
-      - type: respond
-        with: '%payload.issue.assignee.login% and %user.login%'
+    right: '%user.username%'
   - type: respond
     with: issue-assigned.md
