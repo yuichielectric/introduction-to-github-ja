@@ -29,6 +29,7 @@ steps:
 - title: イシューの担当者になりましょう
   description: イシューの担当者になることで誰のタスクなのかを明確にしましょう
   event: issues.assigned
+  link: '{{ repoUrl }}/issues/1'
   actions:
   - type: gate
     left: '%payload.issue.assignee.login%'
