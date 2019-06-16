@@ -3,7 +3,7 @@
 title: 初めてのGitHub
 tagline: プルリクエストの使い方を学びましょう
 description: 10分ほどでプルリクエストの使い方を1から学ぶことができます。
-tags: ["GitHub"]
+tags: ["GitHub", "Pull Request"]
 
 # Repository setup
 # The following section template information for the repository
@@ -27,7 +27,7 @@ before:
 
 steps:
 - title: イシューの担当者になりましょう
-  description: イシューの担当者になることで誰のタスクなのかを明確にしましょう
+  description: イシューの担当者になることで誰のタスクなのかを明確にしましょう。
   event: issues.assigned
   link: '{{ repoUrl }}/issues/1'
   actions:
@@ -37,3 +37,15 @@ steps:
     right: '%user.username%'
   - type: respond
     with: issue-assigned.md
+
+- title: GitHub Pagesを有効化してみよう
+  description: GitHub Pagesを使うことで、簡単にWebサイトを作ることが出来ます。
+  event: page_build
+  link: '{{ repoUrl }}/issues/1'
+  actions:
+  - type: gate
+    left: '%payload.build.status%'
+    operator: ===
+    right: 'built'
+  - type: respond
+    with: pages-built.md
