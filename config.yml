@@ -47,5 +47,8 @@ steps:
     left: '%payload.build.status%'
     operator: ===
     right: 'built'
+    else:
+      - type: respond
+      - with: 'Build failure'
   - type: respond
     with: pages-built.md
